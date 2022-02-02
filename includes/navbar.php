@@ -1,6 +1,6 @@
 <header>
     <div class="logo">
-        <img src="img/header2.png" alt="Logo Blog" width="100%" height="150px">
+        <img src="assets/images/img/header2.png" alt="Logo Blog" width="100%" height="150px">
     </div>
     <div class="nav">
 
