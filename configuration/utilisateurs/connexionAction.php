@@ -17,7 +17,9 @@ if (isset($_POST['connecter']))
             $userInfos = $getUser->fetch(PDO::FETCH_ASSOC);
             if (password_verify($mdp, $userInfos['mdp']))
             {
-                $successMsg = "Bienvenue,cher membre";
+                $_SESSION['auth'] = true;
+                $_SESSION['id'] = $userInfos['id'];
+                $_SESSION['pseudo'] = $userInfos['pseudo'];
                 header('Location: index.php');
             }
             else

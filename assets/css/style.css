@@ -4,8 +4,8 @@
 }
 
 body {
-  height: auto;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   background-color: black;
   font-weight: bold;
 }
@@ -133,6 +133,10 @@ form {
   width: 50%;
   height: 350px;
   background: rgba(7, 85, 170, 1);
+}
+
+#article {
+  color: white;
 }
 
 /*carrousel*/

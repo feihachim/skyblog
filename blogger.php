@@ -1,6 +1,7 @@
 <?php
-require 'configuration/articles/listeArticlesAction.php';
-$title = "HYT blog";
+require 'configuration/articles/bloggerArticlesAction.php';
+$title = "Articles du blogger";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,23 +18,16 @@ $title = "HYT blog";
 <body>
     <?php include 'includes/navbar.php'; ?>
     <main>
-        <br><br>
         <section id="article" style="color:white">
-            <h1>Les derniers articles</h1>
             <?php if (isset($errorMsg)) : ?>
                 <p><?= $errorMsg; ?></p>
             <?php else : ?>
-                <?php foreach ($listArticles as $article) : ?>
-                    <div>
-                        <h2><a href="article.php?id=<?= $article['id']; ?>"><?= $article['titre']; ?></a></h2>
-                        <p>Ecrit par <a href="blogger.php?id=<?= $article['utilisateur_id']; ?>"><?= $article['pseudo']; ?></a> le <?= $article['date_creation']; ?>
-                        </p>
-                        <p>
-                            <ion-icon name="text" id="comment"> <span>Contenu</span>
-                        </p>
-                    </div>
-                    <br><br>
-                <?php endforeach; ?>
+                <h1>Articles du blogger</h1>
+                <ul>
+                    <?php foreach ($articles as $article) : ?>
+                        <li><a href="article.php?id=<?= $article['id']; ?>"><?= $article['titre']; ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
             <?php endif; ?>
         </section>
         <section id="carousel">
@@ -41,6 +35,7 @@ $title = "HYT blog";
                 <img src="assets/images/img/gauche.png" id="left" height="50px">
                 <img src="assets/images/img/droite.png" id="right" height="50px">
             </div>
+
         </section>
     </main>
     <footer>
