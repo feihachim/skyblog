@@ -1,6 +1,6 @@
 <?php
-session_start();
+
 if (!isset($_SESSION['auth']))
 {
-    header('Location: connexion.php');
+    header('Location: index.php?action=connexion');
 }

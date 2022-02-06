@@ -1,8 +1,4 @@
 <?php
-if (session_status() !== PHP_SESSION_ACTIVE)
-{
-    session_start();
-}
 
 define("DB_HOST", "localhost");
 define("DB_NAME", "skyblog");

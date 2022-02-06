@@ -1,55 +1,99 @@
 <?php
-require 'configuration/articles/listeArticlesAction.php';
-$title = "HYT blog";
-?>
-<!DOCTYPE html>
-<html lang="en">
+session_start();
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title; ?></title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-</head>
+$action = $_GET['action'] ?? 'home';
 
-<body>
-    <?php include 'includes/navbar.php'; ?>
-    <main>
-        <br><br>
-        <section id="article" style="color:white">
-            <h1>Les derniers articles</h1>
-            <?php if (isset($errorMsg)) : ?>
-                <p><?= $errorMsg; ?></p>
-            <?php else : ?>
-                <?php foreach ($listArticles as $article) : ?>
-                    <div>
-                        <h2><a href="article.php?id=<?= $article['id']; ?>"><?= $article['titre']; ?></a></h2>
-                        <p>Ecrit par <a href="blogger.php?id=<?= $article['utilisateur_id']; ?>"><?= $article['pseudo']; ?></a> le <?= $article['date_creation']; ?>
-                        </p>
-                        <p>
-                            <ion-icon name="text" id="comment"> <span>Contenu</span>
-                        </p>
-                    </div>
-                    <br><br>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </section>
-        <section id="carousel">
-            <div id="container">
-                <img src="assets/images/img/gauche.png" id="left" height="50px">
-                <img src="assets/images/img/droite.png" id="right" height="50px">
-            </div>
-        </section>
-    </main>
-    <footer>
-        <div>Politique de Confidentialité</div>
-        <div>CopyRights☺</div>
-        <div> Dev 2022</div>
-    </footer>
-    <script src="assets/js/app.js"></script>
-    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-</body>
-
-</html>
+if ($action === 'inscription')
+{
+    $title = "Inscription";
+    ob_start();
+    require 'configuration/utilisateurs/inscriptionAction.php';
+    require 'includes/utilisateurs/inscription.html.php';
+    $content = ob_get_clean();
+    require 'includes/template.html.php';
+}
+elseif ($action === 'article')
+{
+    $title = "Article";
+    ob_start();
+    require 'configuration/articles/articleAction.php';
+    require 'includes/articles/article.html.php';
+    $content = ob_get_clean();
+    require 'includes/template.html.php';
+}
+elseif ($action === 'ajouter-article')
+{
+    require 'configuration/utilisateurs/securityAction.php';
+    $title = "Nouvel article";
+    ob_start();
+    require 'configuration/articles/ajouterArticleAction.php';
+    require 'includes/articles/ajouter-article.html.php';
+    $content = ob_get_clean();
+    require 'includes/template.html.php';
+}
+elseif ($action === 'blogger')
+{
+    $title = "Articles du blogger";
+    ob_start();
+    require 'configuration/articles/bloggerArticlesAction.php';
+    require 'includes/articles/blogger.html.php';
+    $content = ob_get_clean();
+    require 'includes/template.html.php';
+}
+elseif ($action === 'connexion')
+{
+    $title = "Connexion";
+    ob_start();
+    require 'configuration/utilisateurs/connexionAction.php';
+    require 'includes/utilisateurs/connexion.html.php';
+    $content = ob_get_clean();
+    require 'includes/template.html.php';
+}
+elseif ($action === 'deconnexion')
+{
+    require 'configuration/utilisateurs/deconnexionAction.php';
+}
+elseif ($action === 'mes-articles')
+{
+    require 'configuration/utilisateurs/securityAction.php';
+    $title = "Mes articles";
+    ob_start();
+    require 'configuration/articles/mesArticlesAction.php';
+    require 'includes/articles/mes-articles.html.php';
+    $content = ob_get_clean();
+    require 'includes/template.html.php';
+}
+elseif ($action === 'modifier-article')
+{
+    require 'configuration/utilisateurs/securityAction.php';
+    $titre = "Modifier l'article";
+    ob_start();
+    require 'configuration/articles/modifierArticleAction.php';
+    require 'includes/articles/modifier-article.html.php';
+    $content = ob_get_clean();
+    require 'includes/template.html.php';
+}
+elseif ($action === 'profil')
+{
+    require 'configuration/utilisateurs/securityAction.php';
+    $titre = "Profil";
+    ob_start();
+    require 'configuration/utilisateurs/profilAction.php';
+    require 'includes/utilisateurs/profil.html.php';
+    $content = ob_get_clean();
+    require 'includes/template.html.php';
+}
+elseif ($action === 'supprimer-article')
+{
+    require 'configuration/utilisateurs/securityAction.php';
+    require 'configuration/articles/supprimerArticleAction.php';
+}
+else
+{
+    $title = "HYT blog";
+    ob_start();
+    require 'configuration/articles/listeArticlesAction.php';
+    require 'includes/articles/listeArticles.html.php';
+    $content = ob_get_clean();
+    require 'includes/template.html.php';
+}
