@@ -66,7 +66,7 @@ elseif ($action === 'mes-articles')
 elseif ($action === 'modifier-article')
 {
     require 'configuration/utilisateurs/securityAction.php';
-    $titre = "Modifier l'article";
+    $title = "Modifier l'article";
     ob_start();
     require 'configuration/articles/modifierArticleAction.php';
     require 'includes/articles/modifier-article.html.php';

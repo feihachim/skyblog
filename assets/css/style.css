@@ -6,6 +6,7 @@
 body {
   height: 100vh;
   width: 100vw;
+  max-width: 100%;
   background-color: black;
   font-weight: bold;
 }
@@ -27,7 +28,7 @@ footer {
 }
 ion-icon {
   font-size: 30px;
-  cursor: pointer;
+  /*cursor: pointer;*/
 }
 
 .burger {
@@ -70,9 +71,11 @@ ion-icon {
   cursor: pointer;
 }
 
-.home a {
+.nav a {
   text-decoration: none;
+}
 
+.home a {
   color: black;
 }
 
@@ -84,22 +87,26 @@ ion-icon {
 }
 
 .chat a {
-  text-decoration: none;
   color: black;
 }
 
 .login a {
   font-size: 18px;
   background: rgba(7, 170, 23, 1);
-  text-decoration: none;
+
   padding: 5px;
 }
 
 .register a {
-  text-decoration: none;
   padding: 5px;
   background-color: black;
   color: rgba(7, 85, 170, 1);
+}
+
+.profil a,
+.my-articles a,
+.logout a {
+  color: black;
 }
 
 /*main*/
@@ -135,8 +142,16 @@ form {
   background: rgba(7, 85, 170, 1);
 }
 
+/*main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}*/
+
 #article {
   color: white;
+  width: 80%;
 }
 
 /*carrousel*/
@@ -186,6 +201,16 @@ form {
 .menu {
   display: flex;
   justify-content: flex-end;
+}
+
+/* footer */
+footer {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+footer a {
+  color: black;
 }
 
 @media (max-width: 700px) {

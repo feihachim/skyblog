@@ -1,4 +1,4 @@
-<section id="article" style="color:white">
+<section id="article">
     <h1>Les derniers articles</h1>
     <?php if (isset($errorMsg)) : ?>
         <p><?= $errorMsg; ?></p>

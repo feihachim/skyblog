@@ -1,4 +1,4 @@
-<section id="article" style="color:white">
+<section id="article">
     <?php if (isset($errorMsg)) : ?>
         <p><?= $errorMsg; ?></p>
     <?php else : ?>
