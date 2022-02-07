@@ -1,9 +1,12 @@
 <?php
+require('configuration/connect.php');
 
-require('configuration/register.php')
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 
 <head>
     <meta charset="UTF-8">
@@ -11,13 +14,14 @@ require('configuration/register.php')
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
 
-    <link rel="stylesheet" href="style.css">
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
+
+<header>
         <div class="logo">
             <img src="img/header2.png" alt="Logo Blog" width="100%" height="150px">
         </div>
@@ -37,7 +41,11 @@ require('configuration/register.php')
                 <ion-icon name="chatboxes"></ion-icon> <br> <span>Chat</span>
             </div>
             <div class="login"> <a href="connexion.php"><Button>Connexion</Button></a></div>
-          
+            <div class="register"><a href="inscription.php"> <button>Inscription</button></a></div>
+            <div class="profil">
+                <ion-icon name="person" class="person" ></ion-icon> <br> <?php echo"<span>".$_SESSION['pseudo']."</span>"?> 
+            </div>
+            
             <div class="burger">
                 <ion-icon name="menu"></ion-icon>
             </div>
@@ -53,47 +61,45 @@ require('configuration/register.php')
         </div>
 
     </header>
+   
 
-    <main>
-        <section id="acces">
+    <main id="user">
 
+    <section class="info">
+<img src="" alt="Photo de profil">
+ <?= '<h1 class="pseudo">'.$_SESSION['pseudo'].'</h1>'?>
 
-            <div class="inscription">
-
-                <h1>Inscription</h1> <br>
-                <hr> <br>
-
-                <form action="" method="post">
-
-                    <label for="pseudo">Pseudo</label>
-                    <input type="text" name="pseudo" id="pseudo" placeholder="Votre pseudo"><br>
-                    <label for="pseudo2">Confirmation</label>
-                    <input type="text" name="pseudo2" id="pseudo2" placeholder="Confirmez Votre pseudo"> <br>
-                    <label for="mdp">Mot de passe</label>
-                    <input type="password" name="mdp" id="mdp" placeholder="Votre Mot de passe"><br>
-                    <label for="mdp2">Confirmation</label>
-                    <input type="password" name="mdp2" id="mdp2" placeholder="Confirmez Votre Mot de passe "><br>
+<p>Info User</p>
 
 
-                    <button type="submit" name="inscrire" id="btnRegister">M'inscrire</button>
-
-                    <?php if (isset($erreur)) {
-
-                        echo "<p>" . $erreur . "</p>";
-                    }
-                    if (isset($msg)) {
-
-                        echo "<p>" . $msg . "</p>";
-                    }
-
-                    ?>
-
-                </form>
-
-            </div>
 
 
-        </section>
+
+
+
+
+
+    </section>
+
+
+
+
+
+    <section class="article" class="Show">
+
+    <div>
+<h1> Titre </h1>
+<p>Contenu</p>
+
+
+
+
+    </div>
+
+
+
+
+    </section>
 
 
 
@@ -105,13 +111,13 @@ require('configuration/register.php')
 
 
 
-    <footer>
+    <!-- <footer>
 
         <div>Politique de Confidentialité</div>
         <div>CopyRights☺</div>
         <div> Dev 2022</div>
 
-    </footer>
+    </footer> -->
 
     <script src="app.js"></script>
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>

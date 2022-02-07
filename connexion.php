@@ -1,6 +1,7 @@
 <?php
 
-require('configuration/register.php')
+require('configuration/connect.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +11,7 @@ require('configuration/register.php')
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
 
@@ -36,8 +37,8 @@ require('configuration/register.php')
             <div class="chat">
                 <ion-icon name="chatboxes"></ion-icon> <br> <span>Chat</span>
             </div>
-            <div class="login"> <a href="connexion.php"><Button>Connexion</Button></a></div>
-          
+         
+            <div class="register"><a href="inscription.php"> <button>Inscription</button></a></div>
             <div class="burger">
                 <ion-icon name="menu"></ion-icon>
             </div>
@@ -47,7 +48,7 @@ require('configuration/register.php')
 
 
 
-
+ 
 
 
         </div>
@@ -57,43 +58,30 @@ require('configuration/register.php')
     <main>
         <section id="acces">
 
-
-            <div class="inscription">
-
-                <h1>Inscription</h1> <br>
-                <hr> <br>
-
+            <div class="connexion">
+                <h1>Connexion</h1> <br>
+                <hr><br>
                 <form action="" method="post">
 
                     <label for="pseudo">Pseudo</label>
-                    <input type="text" name="pseudo" id="pseudo" placeholder="Votre pseudo"><br>
-                    <label for="pseudo2">Confirmation</label>
-                    <input type="text" name="pseudo2" id="pseudo2" placeholder="Confirmez Votre pseudo"> <br>
+                    <input type="epseudo" name="pseudo" id="pseudo"><br>
                     <label for="mdp">Mot de passe</label>
-                    <input type="password" name="mdp" id="mdp" placeholder="Votre Mot de passe"><br>
-                    <label for="mdp2">Confirmation</label>
-                    <input type="password" name="mdp2" id="mdp2" placeholder="Confirmez Votre Mot de passe "><br>
-
-
-                    <button type="submit" name="inscrire" id="btnRegister">M'inscrire</button>
+                    <input type="password" name="mdp" id="mdp"><br>
+                   
+                    <button class="btn btn-primary" type="submit" name="submit">Me connecter</button> 
 
                     <?php if (isset($erreur)) {
-
-                        echo "<p>" . $erreur . "</p>";
+                        echo "<p>" . $erreur . "</P>";
                     }
-                    if (isset($msg)) {
-
-                        echo "<p>" . $msg . "</p>";
-                    }
-
                     ?>
 
-                </form>
 
+
+
+
+                </form>
             </div>
 
-
-        </section>
 
 
 
