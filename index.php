@@ -76,7 +76,7 @@ elseif ($action === 'modifier-article')
 elseif ($action === 'profil')
 {
     require 'configuration/utilisateurs/securityAction.php';
-    $titre = "Profil";
+    $title = "Profil";
     ob_start();
     require 'configuration/utilisateurs/profilAction.php';
     require 'includes/utilisateurs/profil.html.php';
@@ -87,6 +87,16 @@ elseif ($action === 'supprimer-article')
 {
     require 'configuration/utilisateurs/securityAction.php';
     require 'configuration/articles/supprimerArticleAction.php';
+}
+elseif ($action === 'ajouter-commentaire')
+{
+    require 'configuration/utilisateurs/securityAction.php';
+    $title = "Nouveau commentaire";
+    ob_start();
+    require 'configuration/commentaires/ajouterCommentaireAction.php';
+    require 'includes/commentaires/ajouter-commentaire.html.php';
+    $content = ob_get_clean();
+    require 'includes/template.html.php';
 }
 else
 {

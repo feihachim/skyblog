@@ -19,16 +19,16 @@
     <?php endif; ?>
     <div>
         <h3>Commentaires</h3>
-        <?php if (!isset($commentId)) : ?>
-            <p>
-                <a href="index.php?action=ajouter-commentaire&article=<?= $article['id']; ?>">Nouveau commentaire</a>
-            </p>
-        <?php else : ?>
-            <p>
-                <a href="index.php?action=modifier-commentaire">Modifier commentaire</a>
-                <a href="index.php?action=supprimer-commentaire">Supprimer commentaire</a>
-            </p>
-        <?php endif; ?>
+        <form action="" method="post">
+            <div>
+                <label for="comment">Description du commentaire</label>
+                <textarea name="comment" id="comment"></textarea>
+            </div>
+            <input type="submit" name="publier" value="Publier">
+            <?php if (isset($errorMsgComment)) : ?>
+                <p><?= $errorMsgComment; ?></p>
+            <?php endif; ?>
+        </form>
         <?php if (!$comments) : ?>
             <p>Pas de commentaire</p>
         <?php else : ?>
