@@ -17,4 +17,16 @@
             </p>
         </div>
     <?php endif; ?>
+    <div>
+        <?php if (!$comments) : ?>
+            <p>Pas de commentaire</p>
+        <?php else : ?>
+            <?php foreach ($comments as $comment) : ?>
+                <article>
+                    <h3>Ecrit par <?= $comment['pseudo']; ?> le <?= $comment['date_creation']; ?></h3>
+                    <p><?= $comment['contenu']; ?></p>
+                </article>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
 </section>
