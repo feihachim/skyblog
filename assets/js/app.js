@@ -49,7 +49,28 @@ close.addEventListener('click', function () {
     document.querySelector(".register").style.display = "none";
     document.querySelector(".close").style.display = "none";
     document.querySelector(".burger").style.display = "block";
-
-
-
 })
+
+// form comment
+
+/*const addCommentButton = document.querySelector('.newComment');
+const updateCommentButton = document.querySelector('.updateComment');
+const commentForm = document.querySelector('#commentForm');
+
+try {
+
+    addCommentButton.addEventListener("click", event => {
+        commentForm.style.display = "block";
+    });
+
+    updateCommentButton.addEventListener("click", event => {
+        commentForm.style.display = "block";
+        window.location("#commentForm");
+    });
+}
+catch (error) {
+    console.error(error);
+}*/
+
+
+

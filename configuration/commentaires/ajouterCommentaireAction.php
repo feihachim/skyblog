@@ -29,7 +29,7 @@ if ($articleId > 0)
             if (!empty($_POST['comment']))
             {
                 $newComment = nl2br(htmlspecialchars($_POST['comment']));
-                $utilisateur_id = $_SESSION['id'] ?? 0;
+                $utilisateur_id = htmlspecialchars($_POST['userId']);
 
                 $insertComment = $bdd->prepare("INSERT INTO commentaires(contenu,date_creation,article_id,utilisateur_id) VALUES(?,NOW(),?,?)");
                 $insertComment->execute([$newComment, $articleId, $utilisateur_id]);

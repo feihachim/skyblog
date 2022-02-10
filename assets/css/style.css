@@ -203,6 +203,11 @@ form {
   justify-content: flex-end;
 }
 
+/* form comment */
+/*#commentForm {
+  display: none;
+}*/
+
 /* footer */
 footer {
   padding-left: 50px;

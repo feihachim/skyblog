@@ -19,14 +19,9 @@
     <?php endif; ?>
     <div>
         <h3>Commentaires</h3>
-        <?php if (!isset($commentId)) : ?>
+        <?php if (!isset($userComment) && isset($_SESSION['auth'])) : ?>
             <p>
                 <a href="index.php?action=ajouter-commentaire&article=<?= $article['id']; ?>">Nouveau commentaire</a>
-            </p>
-        <?php else : ?>
-            <p>
-                <a href="index.php?action=modifier-commentaire">Modifier commentaire</a>
-                <a href="index.php?action=supprimer-commentaire">Supprimer commentaire</a>
             </p>
         <?php endif; ?>
         <?php if (!$comments) : ?>
@@ -36,8 +31,14 @@
                 <article>
                     <h4>Ecrit par <a href="index.php?action=blogger&id=<?= $comment['utilisateur_id']; ?>"><?= $comment['pseudo']; ?></a> le <?= $comment['date_creation']; ?></h4>
                     <p><?= $comment['contenu']; ?></p>
-                    < </article>
-                    <?php endforeach; ?>
-                <?php endif; ?>
+                    <?php if (isset($_SESSION['id']) && $_SESSION['id'] == $comment['utilisateur_id']) : ?>
+                        <p>
+                            <a href="index.php?action=modifier-commentaire&id=<?= $userComment['comment_id']; ?>">Modifier</a>
+                            <a href="index.php?action=supprimer-commentaire&id=<?= $userComment['comment_id']; ?>">Supprimer</a>
+                        </p>
+                    <?php endif; ?>
+                </article>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
 </section>

@@ -98,6 +98,21 @@ elseif ($action === 'ajouter-commentaire')
     $content = ob_get_clean();
     require 'includes/template.html.php';
 }
+elseif ($action === 'modifier-commentaire')
+{
+    require 'configuration/utilisateurs/securityAction.php';
+    $title = "Modification du commentaire";
+    ob_start();
+    require 'configuration/commentaires/modifierCommentaireAction.php';
+    require 'includes/commentaires/modifier-commentaire.html.php';
+    $content = ob_get_clean();
+    require 'includes/template.html.php';
+}
+elseif ($action === 'supprimer-commentaire')
+{
+    require 'configuration/utilisateurs/securityAction.php';
+    require 'configuration/commentaires/supprimerCommentaireAction.php';
+}
 else
 {
     $title = "HYT blog";

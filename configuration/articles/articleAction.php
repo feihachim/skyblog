@@ -17,15 +17,14 @@ if ($articleId > 0)
         if ($getComments->rowCount() > 0)
         {
             $comments = $getComments->fetchAll(PDO::FETCH_ASSOC);
-            $getCommentId = $bdd->prepare("SELECT commentaires.id AS comment_id FROM commentaires LEFT JOIN utilisateurs ON commentaires.utilisateur_id=utilisateurs.id WHERE commentaires.utilisateur_id=? AND commentaires.article_id=?");
+            $getComment = $bdd->prepare("SELECT commentaires.id AS comment_id,commentaires.contenu FROM commentaires LEFT JOIN utilisateurs ON commentaires.utilisateur_id=utilisateurs.id WHERE commentaires.utilisateur_id=? AND commentaires.article_id=?");
             if (isset($_SESSION['id']))
             {
-                $getCommentId->execute([$_SESSION['id'], $articleId]);
+                $getComment->execute([$_SESSION['id'], $articleId]);
 
-                if ($getCommentId->rowCount() > 0)
+                if ($getComment->rowCount() > 0)
                 {
-                    $singleComment = $getCommentId->fetch(PDO::FETCH_ASSOC);
-                    $commentId = $singleComment['comment_id'];
+                    $userComment = $getComment->fetch(PDO::FETCH_ASSOC);
                 }
             }
         }
