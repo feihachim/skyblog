@@ -19,7 +19,8 @@ if(!$_SESSION['mdp']){
     $infoUsers = $bdd->query('select * FROM membres');
     while ($user =$infoUsers->fetch()){
         ?>
-       <p><?= $user['pseudo']; ?></p>
+       <p><?= $user['pseudo']; ?> <a href="bannir.php?id=<?= $user['id']; ?>" style="color:#990000; text-decoration: none;" >Bannir </a>
+    </p>
        <?php
     }
     ?>

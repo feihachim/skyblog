@@ -15,6 +15,7 @@ if(!$_SESSION['mdp']){
     </head>
     <body>
         <a href="utilisateurs.php">Afficher tous les Utilisateurs</a>
+        <a href="articlePost.php">Publier un nouvel article</a>
         
         
     </body>
