@@ -24,7 +24,16 @@ if (isset($_POST['inscrire']))
                 $req = $insertUser->execute([$pseudo, $mdp]);
                 if ($req)
                 {
-                    $successMsg = "Vous avez bien été enregistré!";
+                    $getUser = $bdd->prepare("SELECT * FROM utilisateurs WHERE pseudo=?");
+                    $getUser->execute([$pseudo]);
+
+                    $userInfos = $getUser->fetch(PDO::FETCH_ASSOC);
+                    $_SESSION['auth'] = true;
+                    $_SESSION['id'] = $userInfos['id'];
+                    $_SESSION['pseudo'] = $userInfos['pseudo'];
+                    $_SESSION['admin'] = filter_var($userInfos['admin'], FILTER_VALIDATE_BOOLEAN);
+                    header('Location: index.php');
+                    //$successMsg = "Vous avez bien été enregistré!";
                 }
                 else
                 {

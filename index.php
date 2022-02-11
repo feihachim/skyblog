@@ -1,124 +1,72 @@
 <?php
 session_start();
 
+require 'configuration/action.php';
+
 $action = $_GET['action'] ?? 'home';
 
-if ($action === 'inscription')
+switch ($action)
 {
-    $title = "Inscription";
-    ob_start();
-    require 'configuration/utilisateurs/inscriptionAction.php';
-    require 'includes/utilisateurs/inscription.html.php';
-    $content = ob_get_clean();
-    require 'includes/template.html.php';
-}
-elseif ($action === 'article')
-{
-    $title = "Article";
-    ob_start();
-    require 'configuration/articles/articleAction.php';
-    require 'includes/articles/article.html.php';
-    $content = ob_get_clean();
-    require 'includes/template.html.php';
-}
-elseif ($action === 'ajouter-article')
-{
-    require 'configuration/utilisateurs/securityAction.php';
-    $title = "Nouvel article";
-    ob_start();
-    require 'configuration/articles/ajouterArticleAction.php';
-    require 'includes/articles/ajouter-article.html.php';
-    $content = ob_get_clean();
-    require 'includes/template.html.php';
-}
-elseif ($action === 'blogger')
-{
-    $title = "Articles du blogger";
-    ob_start();
-    require 'configuration/articles/bloggerArticlesAction.php';
-    require 'includes/articles/blogger.html.php';
-    $content = ob_get_clean();
-    require 'includes/template.html.php';
-}
-elseif ($action === 'connexion')
-{
-    $title = "Connexion";
-    ob_start();
-    require 'configuration/utilisateurs/connexionAction.php';
-    require 'includes/utilisateurs/connexion.html.php';
-    $content = ob_get_clean();
-    require 'includes/template.html.php';
-}
-elseif ($action === 'deconnexion')
-{
-    require 'configuration/utilisateurs/deconnexionAction.php';
-}
-elseif ($action === 'mes-articles')
-{
-    require 'configuration/utilisateurs/securityAction.php';
-    $title = "Mes articles";
-    ob_start();
-    require 'configuration/articles/mesArticlesAction.php';
-    require 'includes/articles/mes-articles.html.php';
-    $content = ob_get_clean();
-    require 'includes/template.html.php';
-}
-elseif ($action === 'modifier-article')
-{
-    require 'configuration/utilisateurs/securityAction.php';
-    $title = "Modifier l'article";
-    ob_start();
-    require 'configuration/articles/modifierArticleAction.php';
-    require 'includes/articles/modifier-article.html.php';
-    $content = ob_get_clean();
-    require 'includes/template.html.php';
-}
-elseif ($action === 'profil')
-{
-    require 'configuration/utilisateurs/securityAction.php';
-    $title = "Profil";
-    ob_start();
-    require 'configuration/utilisateurs/profilAction.php';
-    require 'includes/utilisateurs/profil.html.php';
-    $content = ob_get_clean();
-    require 'includes/template.html.php';
-}
-elseif ($action === 'supprimer-article')
-{
-    require 'configuration/utilisateurs/securityAction.php';
-    require 'configuration/articles/supprimerArticleAction.php';
-}
-elseif ($action === 'ajouter-commentaire')
-{
-    require 'configuration/utilisateurs/securityAction.php';
-    $title = "Nouveau commentaire";
-    ob_start();
-    require 'configuration/commentaires/ajouterCommentaireAction.php';
-    require 'includes/commentaires/ajouter-commentaire.html.php';
-    $content = ob_get_clean();
-    require 'includes/template.html.php';
-}
-elseif ($action === 'modifier-commentaire')
-{
-    require 'configuration/utilisateurs/securityAction.php';
-    $title = "Modification du commentaire";
-    ob_start();
-    require 'configuration/commentaires/modifierCommentaireAction.php';
-    require 'includes/commentaires/modifier-commentaire.html.php';
-    $content = ob_get_clean();
-    require 'includes/template.html.php';
-}
-elseif ($action === 'supprimer-commentaire')
-{
-    require 'configuration/utilisateurs/securityAction.php';
-    require 'configuration/commentaires/supprimerCommentaireAction.php';
-}
-else
-{
-    $title = "HYT blog";
-    ob_start();
-    require 'configuration/articles/listeArticlesAction.php';
-    require 'includes/articles/listeArticles.html.php';
-    $content = ob_get_clean();
-    require 'includes/template.html.php';
+    case 'inscription':
+        render("Inscription", 'configuration/utilisateurs/inscriptionAction.php', 'includes/utilisateurs/inscription.html.php');
+        break;
+    case 'article':
+        render("Article", 'configuration/articles/articleAction.php', 'includes/articles/article.html.php');
+        break;
+    case 'ajouter-article':
+        require 'configuration/utilisateurs/securityAction.php';
+        render("Nouvel article", 'configuration/articles/ajouterArticleAction.php', 'includes/articles/ajouter-article.html.php');
+        break;
+    case 'blogger':
+        render("Articles du blogger", 'configuration/articles/bloggerArticlesAction.php', 'includes/articles/blogger.html.php');
+        break;
+    case 'connexion':
+        render("Connexion", 'configuration/utilisateurs/connexionAction.php', 'includes/utilisateurs/connexion.html.php');
+        break;
+    case 'deconnexion':
+        require 'configuration/utilisateurs/deconnexionAction.php';
+        break;
+    case 'mes-articles':
+        require 'configuration/utilisateurs/securityAction.php';
+        render("Mes articles", 'configuration/articles/mesArticlesAction.php', 'includes/articles/mes-articles.html.php');
+        break;
+    case 'modifier-article':
+        require 'configuration/utilisateurs/securityAction.php';
+        render("Modifier l'article", 'configuration/articles/modifierArticleAction.php', 'includes/articles/modifier-article.html.php');
+        break;
+    case 'supprimer-article':
+        require 'configuration/utilisateurs/securityAction.php';
+        require 'configuration/articles/supprimerArticleAction.php';
+        break;
+    case 'ajouter-commentaire':
+        require 'configuration/utilisateurs/securityAction.php';
+        render("Nouveau commentaire", 'configuration/commentaires/ajouterCommentaireAction.php', 'includes/commentaires/ajouter-commentaire.html.php');
+        break;
+    case 'modifier-commentaire':
+        require 'configuration/utilisateurs/securityAction.php';
+        render("Modifiaction du commentaire", 'configuration/commentaires/modifierCommentaireAction.php', 'includes/commentaires/modifier-commentaire.html.php');
+        break;
+    case 'supprimer-commentaire':
+        require 'configuration/utilisateurs/securityAction.php';
+        require 'configuration/commentaires/supprimerCommentaireAction.php';
+        break;
+    case 'profil':
+        require 'configuration/utilisateurs/securityAction.php';
+        render("Profil", 'configuration/utilisateurs/profilAction.php', 'includes/utilisateurs/profil.html.php');
+        break;
+    case 'admin':
+        require 'configuration/admin/securityAdminAction.php';
+        render("Espace administrateur", 'configuration/admin/adminAction.php', 'includes/admin/admin.html.php');
+        break;
+    case 'admin.articles':
+        require 'configuration/admin/securityAdminAction.php';
+        render("Liste des articles", 'configuration/admin/adminArticlesAction.php', 'includes/admin/admin-articles.html.php');
+        break;
+    case 'admin.profils':
+        require 'configuration/admin/securityAdminAction.php';
+        render("Liste des profils", 'configuration/admin/adminProfilsAction.php', 'includes/admin/admin-profils.html.php');
+        break;
+    default:
+        render("HYT blog", 'configuration/articles/listeArticlesAction.php', 'includes/articles/listeArticles.html.php');
+        break;
 }

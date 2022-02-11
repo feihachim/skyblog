@@ -20,7 +20,15 @@ if (isset($_POST['connecter']))
                 $_SESSION['auth'] = true;
                 $_SESSION['id'] = $userInfos['id'];
                 $_SESSION['pseudo'] = $userInfos['pseudo'];
-                header('Location: index.php');
+                $_SESSION['admin'] = filter_var($userInfos['admin'], FILTER_VALIDATE_BOOLEAN);
+                if ($_SESSION['admin'] == true)
+                {
+                    header('Location: index.php?action=admin');
+                }
+                else
+                {
+                    header('Location: index.php');
+                }
             }
             else
             {

@@ -31,7 +31,7 @@
                 <article>
                     <h4>Ecrit par <a href="index.php?action=blogger&id=<?= $comment['utilisateur_id']; ?>"><?= $comment['pseudo']; ?></a> le <?= $comment['date_creation']; ?></h4>
                     <p><?= $comment['contenu']; ?></p>
-                    <?php if (isset($_SESSION['id']) && $_SESSION['id'] == $comment['utilisateur_id']) : ?>
+                    <?php if ((isset($_SESSION['id']) && $_SESSION['id'] == $comment['utilisateur_id']) || (isset($_SESSION['admin']) && $_SESSION['admin'] == true)) : ?>
                         <p>
                             <a href="index.php?action=modifier-commentaire&id=<?= $userComment['comment_id']; ?>">Modifier</a>
                             <a href="index.php?action=supprimer-commentaire&id=<?= $userComment['comment_id']; ?>">Supprimer</a>
