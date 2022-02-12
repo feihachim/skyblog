@@ -54,7 +54,7 @@ if (isset($_POST['publierArticle']))
 
             if ($insertArticle->rowCount() > 0)
             {
-                header('Location: index.php?action=mes-articles');
+                header('Location: index.php?action=mon-profil');
             }
             else
             {

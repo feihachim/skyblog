@@ -11,7 +11,7 @@
             <br>
             <p><?= $article['contenu']; ?></p>
             <br><br>
-            <i>Ecrit par <a href="index.php?action=blogger&id=<?= $article['utilisateur_id']; ?>"><?= $article['pseudo']; ?></a> le <?= $article['date_creation']; ?></i>
+            <i>Ecrit par <a href="index.php?action=profil&id=<?= $article['utilisateur_id']; ?>"><?= $article['pseudo']; ?></a> le <?= $article['date_creation']; ?></i>
             <p>
                 <ion-icon name="text" id="comment"> <span>Contenu</span>
             </p>
@@ -29,7 +29,7 @@
         <?php else : ?>
             <?php foreach ($comments as $comment) : ?>
                 <article>
-                    <h4>Ecrit par <a href="index.php?action=blogger&id=<?= $comment['utilisateur_id']; ?>"><?= $comment['pseudo']; ?></a> le <?= $comment['date_creation']; ?></h4>
+                    <h4>Ecrit par <a href="index.php?action=profil&id=<?= $comment['utilisateur_id']; ?>"><?= $comment['pseudo']; ?></a> le <?= $comment['date_creation']; ?></h4>
                     <p><?= $comment['contenu']; ?></p>
                     <?php if ((isset($_SESSION['id']) && $_SESSION['id'] == $comment['utilisateur_id']) || (isset($_SESSION['admin']) && $_SESSION['admin'] == true)) : ?>
                         <p>

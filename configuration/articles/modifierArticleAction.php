@@ -63,14 +63,14 @@ if (isset($_GET['id']))
                             $updateArticle = $bdd->prepare("UPDATE articles SET titre=?,contenu=?,urlPhoto=? WHERE id=?");
                             $updateArticle->execute([$titre, $contenu, $file, $articleId]);
                         }
-                        var_dump($file);
+                        //var_dump($file);
                         if ($updateArticle->rowCount() > 0)
                         {
                             if ($file != null)
                             {
                                 unlink(ARTICLES_IMAGES_PATH . $article['urlPhoto']);
                             }
-                            header('Location: index.php?action=mes-articles');
+                            header('Location: index.php?action=mon-profil');
                         }
                         else
                         {

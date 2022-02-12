@@ -1,7 +1,7 @@
 <h1>Mofifier Article</h1>
 <section id="article">
     <form action="" method="post" enctype="multipart/form-data">
-        <h2><?= $nom_fichier ?? 'Il n\'y a pas de fichier'; ?></h2>
+        <!--<h2><?= $nom_fichier ?? 'Il n\'y a pas de fichier'; ?></h2>-->
         <div>
             <label for="title">Titre : </label>
             <input type="text" name="title" id="title" value="<?= $article['titre'] ?? ''; ?>">

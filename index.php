@@ -17,18 +17,11 @@ switch ($action)
         require 'configuration/utilisateurs/securityAction.php';
         render("Nouvel article", 'configuration/articles/ajouterArticleAction.php', 'includes/articles/ajouter-article.html.php');
         break;
-    case 'blogger':
-        render("Articles du blogger", 'configuration/articles/bloggerArticlesAction.php', 'includes/articles/blogger.html.php');
-        break;
     case 'connexion':
         render("Connexion", 'configuration/utilisateurs/connexionAction.php', 'includes/utilisateurs/connexion.html.php');
         break;
     case 'deconnexion':
         require 'configuration/utilisateurs/deconnexionAction.php';
-        break;
-    case 'mes-articles':
-        require 'configuration/utilisateurs/securityAction.php';
-        render("Mes articles", 'configuration/articles/mesArticlesAction.php', 'includes/articles/mes-articles.html.php');
         break;
     case 'modifier-article':
         require 'configuration/utilisateurs/securityAction.php';
@@ -51,8 +44,22 @@ switch ($action)
         require 'configuration/commentaires/supprimerCommentaireAction.php';
         break;
     case 'profil':
-        require 'configuration/utilisateurs/securityAction.php';
         render("Profil", 'configuration/utilisateurs/profilAction.php', 'includes/utilisateurs/profil.html.php');
+        break;
+    case 'chercher-profil':
+        render("Recherche profil", 'configuration/utilisateurs/chercherProfilAction.php', 'includes/utilisateurs/chercher-profil.html.php');
+        break;
+    case 'mon-profil':
+        require 'configuration/utilisateurs/securityAction.php';
+        render("Mon profil", 'configuration/utilisateurs/profilAction.php', 'includes/utilisateurs/profil.html.php');
+        break;
+    case 'modifier-profil':
+        require 'configuration/utilisateurs/securityAction.php';
+        render("Modifier profil", 'configuration/utilisateurs/modifierProfilAction.php', 'includes/utilisateurs/modifier-profil.html.php');
+        break;
+    case 'supprimer-profil':
+        require 'configuration/utilisateurs/securityAction.php';
+        require 'configuration/utilisateurs/supprimerProfilAction.php';
         break;
     case 'admin':
         require 'configuration/admin/securityAdminAction.php';

@@ -19,9 +19,10 @@ if (isset($_POST['inscrire']))
             if ($mdp === $mdp2)
             {
                 $mdp = password_hash($mdp, PASSWORD_DEFAULT);
+                $urlPhoto = "blank-profile-picture-g57d8d01f3_640.png";
 
-                $insertUser = $bdd->prepare("INSERT INTO utilisateurs (pseudo,mdp,urlPhoto) VALUES(?,?,NULL)");
-                $req = $insertUser->execute([$pseudo, $mdp]);
+                $insertUser = $bdd->prepare("INSERT INTO utilisateurs (pseudo,mdp,urlPhoto) VALUES(?,?,?)");
+                $req = $insertUser->execute([$pseudo, $mdp, $urlPhoto]);
                 if ($req)
                 {
                     $getUser = $bdd->prepare("SELECT * FROM utilisateurs WHERE pseudo=?");

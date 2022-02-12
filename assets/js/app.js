@@ -72,5 +72,11 @@ catch (error) {
     console.error(error);
 }*/
 
+/*const searchForm=document.querySelector("#search-user");
+const searchInput=document.querySelector("#search-input");
 
+searchForm.addEventListener("submit",event=>{
+    if(searchInput.value!==""){
 
+    }
+});*/

@@ -19,6 +19,6 @@ if (isset($_GET['id']))
             unlink($urlPhoto);
         }
 
-        header('Location: index.php?action=mes-articles');
+        header('Location: index.php?action=mon-profil');
     }
 }

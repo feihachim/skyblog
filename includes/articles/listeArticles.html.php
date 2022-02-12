@@ -6,7 +6,7 @@
         <?php foreach ($listArticles as $article) : ?>
             <div>
                 <h2><a href="index.php?action=article&id=<?= $article['id']; ?>"><?= $article['titre']; ?></a></h2>
-                <p>Ecrit par <a href="index.php?action=blogger&id=<?= $article['utilisateur_id']; ?>"><?= $article['pseudo']; ?></a> le <?= $article['date_creation']; ?>
+                <p>Ecrit par <a href="index.php?action=profil&id=<?= $article['utilisateur_id']; ?>"><?= $article['pseudo']; ?></a> le <?= $article['date_creation']; ?>
                 </p>
                 <p>
                     <ion-icon name="text" id="comment"> <span>Contenu</span>
