@@ -16,11 +16,13 @@
             <a href="index.php">Home</a>
         </div>
         <br>
+        <div class="admin"><a href="index.php?action=admin">Admin</a></div>
         <div class="chat">
-            <ion-icon name="chatboxes"></ion-icon><a>Chat</a>
+            <ion-icon name="chatboxes"></ion-icon>
+            <a>Chat</a>
         </div>
-        <div class="login"> <a href="index.php?action=connexion">Connexion</a></div>
-        <div class="register"> <a href="index.php?action=inscription">Inscription</a></div>
+        <div class="mon-profil"><a href="index.php?action=mon-profil">Mon profil</a></div>
+        <div class="logout"><a href="index.php?action=deconnexion">Déconnexion</a></div>
         <div class="burger">
             <ion-icon name="menu"></ion-icon>
         </div>

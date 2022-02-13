@@ -17,15 +17,15 @@
             </p>
         </div>
     <?php endif; ?>
-    <div>
+    <div class="updateCommentForm">
         <h3>Commentaires</h3>
-        <form action="" method="post">
+        <form class="formUpdateComment bg-dark text-white rounded" action="" method="post">
             <div>
-                <label for="comment">Description du commentaire</label>
-                <textarea name="comment" id="comment"></textarea>
+                <label for="comment" class="form-label">Description du commentaire</label>
+                <textarea name="comment" id="comment" class="form-control" rows="6"></textarea>
             </div>
             <input type="hidden" name="userId" id="userId" value="<?= $_SESSION['id'] ?? ''; ?>">
-            <input type="submit" name="publier" value="Publier">
+            <input type="submit" name="publier" class="btn btn-primary" value="Publier">
             <?php if (isset($errorMsgComment)) : ?>
                 <p><?= $errorMsgComment; ?></p>
             <?php endif; ?>
@@ -37,8 +37,8 @@
                 <article>
                     <h4>Ecrit par <a href="index.php?action=blogger&id=<?= $comment['utilisateur_id']; ?>"><?= $comment['pseudo']; ?></a> le <?= $comment['date_creation']; ?></h4>
                     <p><?= $comment['contenu']; ?></p>
-                    < </article>
-                    <?php endforeach; ?>
-                <?php endif; ?>
+                </article>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
 </section>

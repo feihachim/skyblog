@@ -1,0 +1,28 @@
+DROP TABLE IF EXISTS Utilisateurs ;
+CREATE TABLE Utilisateurs (idUser_Utilisateurs INT AUTO_INCREMENT NOT NULL,
+pseudo_Utilisateurs VARCHAR(255),
+mdp_Utilisateurs VARCHAR(255),
+userPhoto_Utilisateurs VARCHAR(255),
+admin_Utilisateurs BOOLEAN,
+PRIMARY KEY (idUser_Utilisateurs)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Articles ;
+CREATE TABLE Articles (idArticle_Articles INT(11) AUTO_INCREMENT NOT NULL,
+titre_Articles VARCHAR(255),
+articleDescription_Articles TEXT,
+articlePhoto_Articles VARCHAR(255),
+dateCreationArticle_Articles DATETIME,
+idUser_Utilisateurs **NOT FOUND**(11),
+PRIMARY KEY (idArticle_Articles)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Commentaires ;
+CREATE TABLE Commentaires (idCommentaire_Commentaires INT(11) AUTO_INCREMENT NOT NULL,
+commentaireContenu_Commentaires TEXT,
+idUser_Utilisateurs **NOT FOUND**(11),
+idArticle_Articles **NOT FOUND**(11),
+PRIMARY KEY (idCommentaire_Commentaires)) ENGINE=InnoDB;
+
+ALTER TABLE Articles ADD CONSTRAINT FK_Articles_idUser_Utilisateurs FOREIGN KEY (idUser_Utilisateurs) REFERENCES Utilisateurs (idUser_Utilisateurs);
+
+ALTER TABLE Commentaires ADD CONSTRAINT FK_Commentaires_idUser_Utilisateurs FOREIGN KEY (idUser_Utilisateurs) REFERENCES Utilisateurs (idUser_Utilisateurs);
+ALTER TABLE Commentaires ADD CONSTRAINT FK_Commentaires_idArticle_Articles FOREIGN KEY (idArticle_Articles) REFERENCES Articles (idArticle_Articles);

@@ -1,15 +1,23 @@
 <h1>Liste des articles</h1>
-<section>
+<section class="admin-panel bg-dark text-white w-50 rounded">
     <ul>
         <?php if ($articles == []) : ?>
-            <li>Pas d'articles</li>
+            <ul class="list-group list-group-horizontal">
+                <li class="list-group-item">Pas d'articles</li>
+            </ul>
         <?php else : ?>
             <?php foreach ($articles as $article) : ?>
-                <li>
-                    <a href="index.php?action=article&id=<?= $article['id']; ?>"><?= $article['titre']; ?></a>
-                    <a href="index.php?action=modifier-article&id=<?= $article['id']; ?>">Modifier</a>
-                    <a href="index.php?action=supprimer-article&id=<?= $article['id']; ?>">Supprimer</a>
-                </li>
+                <ul class="list-group list-group-horizontal">
+                    <li class="list-group-item">
+                        <a href="index.php?action=article&id=<?= $article['id']; ?>"><?= $article['titre']; ?></a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="index.php?action=modifier-article&id=<?= $article['id']; ?>">Modifier</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="index.php?action=supprimer-article&id=<?= $article['id']; ?>">Supprimer</a>
+                    </li>
+                </ul>
             <?php endforeach; ?>
         <?php endif; ?>
     </ul>

@@ -17,15 +17,15 @@
             </p>
         </div>
     <?php endif; ?>
-    <div>
+    <div class="updateCommentForm">
         <h3>Commentaires</h3>
-        <form action="" method="post">
+        <form class="formUpdateComment bg-dark text-white rounded" action="" method="post">
             <div>
-                <label for="comment">Description du commentaire</label>
-                <textarea name="comment" id="comment"><?= $userComment['contenu']; ?></textarea>
+                <label for="comment" class="form-label">Description du commentaire</label>
+                <textarea name="comment" id="comment" class="form-control" rows="5"><?= $userComment['contenu']; ?></textarea>
             </div>
             <input type="hidden" name="userId" id="userId" value="<?= $_SESSION['id'] ?? ''; ?>">
-            <input type="submit" name="publier" value="Publier">
+            <input type="submit" name="publier" class="btn btn-primary" value="Modifier">
             <?php if (isset($errorMsgComment)) : ?>
                 <p><?= $errorMsgComment; ?></p>
             <?php endif; ?>

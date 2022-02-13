@@ -1,4 +1,4 @@
-<section id="infoProfil">
+<section id="infoProfil" class="bg-dark text-white rounded">
 
     <?php if (isset($errorMsg)) : ?>
         <p><?= $errorMsg; ?></p>
@@ -38,7 +38,9 @@
                 <?php endif; ?>
             </ul>
         </div>
-        <a href="index.php?action=modifier-profil&id=<?= $profilId; ?>">Modifier profil</a>
+        <?php if ((isset($_SESSION['id']) && $_SESSION['id'] == $profilId) || (isset($_SESSION['admin']) && $_SESSION['admin'] == true)) : ?>
+            <a href="index.php?action=modifier-profil&id=<?= $profilId; ?>">Modifier profil</a>
+        <?php endif; ?>
     <?php endif; ?>
 
 </section>

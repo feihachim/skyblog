@@ -19,14 +19,11 @@
 </head>
 
 <body>
-    <?php include 'includes/partials/navbar.html.php'; ?>
+    <?php include 'includes/partials/admin-navbar.html.php'; ?>
     <main class="container">
-        <section>
-            <?= $content; ?>
-        </section>
-        <section>
-            <?php include 'includes/partials/carousel.html.php'; ?>
-        </section>
+        <br><br>
+        <?= $content; ?>
+        <?php include 'includes/partials/carousel.html.php'; ?>
     </main>
     <?php include 'includes/partials/footer.html.php'; ?>
     <script src="assets/js/app.js"></script>

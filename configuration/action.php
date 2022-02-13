@@ -7,5 +7,16 @@ function render($titlePage, $actionFile, $viewFile, $templateFile = 'template.ht
     require  $actionFile;
     require $viewFile;
     $content = ob_get_clean();
-    require LAYOUT_PATH . $templateFile;
+    if (isset($_SESSION['admin']) && $_SESSION['admin'] == false)
+    {
+        require LAYOUT_PATH . 'user-template.html.php';
+    }
+    if (isset($_SESSION['admin']) && $_SESSION['admin'] == true)
+    {
+        require LAYOUT_PATH . 'admin-template.html.php';
+    }
+    if (!isset($_SESSION['admin']))
+    {
+        require LAYOUT_PATH . 'template.html.php';
+    }
 }

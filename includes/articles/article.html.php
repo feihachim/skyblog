@@ -1,4 +1,4 @@
-<section id="article">
+<section id="article" class="bg-dark text-white rounded">
     <?php if (isset($errorMsg)) : ?>
         <p><?= $errorMsg; ?></p>
     <?php else : ?>
@@ -17,7 +17,7 @@
             </p>
         </div>
     <?php endif; ?>
-    <div>
+    <div class="commentaires">
         <h3>Commentaires</h3>
         <?php if (!isset($userComment) && isset($_SESSION['auth'])) : ?>
             <p>
@@ -29,8 +29,8 @@
         <?php else : ?>
             <?php foreach ($comments as $comment) : ?>
                 <article>
-                    <h4>Ecrit par <a href="index.php?action=profil&id=<?= $comment['utilisateur_id']; ?>"><?= $comment['pseudo']; ?></a> le <?= $comment['date_creation']; ?></h4>
                     <p><?= $comment['contenu']; ?></p>
+                    <h4>Ecrit par <a href="index.php?action=profil&id=<?= $comment['utilisateur_id']; ?>"><?= $comment['pseudo']; ?></a> le <?= $comment['date_creation']; ?></h4>
                     <?php if ((isset($_SESSION['id']) && $_SESSION['id'] == $comment['utilisateur_id']) || (isset($_SESSION['admin']) && $_SESSION['admin'] == true)) : ?>
                         <p>
                             <a href="index.php?action=modifier-commentaire&id=<?= $userComment['comment_id']; ?>">Modifier</a>

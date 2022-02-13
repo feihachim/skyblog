@@ -24,8 +24,12 @@ footer {
   border-bottom: solid;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
+  column-gap: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
+
 ion-icon {
   font-size: 30px;
   /*cursor: pointer;*/
@@ -86,8 +90,9 @@ ion-icon {
   align-items: center;
 }
 
-.chat a {
-  color: black;
+.logout,
+.login {
+  margin-left: auto;
 }
 
 .login a {
@@ -103,13 +108,27 @@ ion-icon {
   color: rgba(7, 85, 170, 1);
 }
 
-.profil a,
-.my-articles a,
-.logout a {
+:is(.profil, .my-articles, .logout, .chat, .mon-profil, .admin) a {
   color: black;
 }
 
+/*.profil a,
+.my-articles a,
+.logout a,
+.chat a,
+.mon-profil a,
+.admin a {
+  color: black;
+}*/
+
 /*main*/
+
+section {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 input {
   height: 20px;
@@ -132,8 +151,29 @@ form {
 }
 .connexion {
   width: 50%;
-  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*height: 350px;*/
   background: rgba(7, 170, 23, 1);
+  margin: 50px;
+}
+
+hr {
+  border: 1px solid black;
+}
+
+.connexion form {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.connexion div {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .inscription {
@@ -142,21 +182,59 @@ form {
   background: rgba(7, 85, 170, 1);
 }
 
-/*main {
+main {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-}*/
+}
 
 #article {
   color: white;
   width: 80%;
 }
 
+#articles {
+  justify-content: flex-start;
+}
+
+.searchbar {
+  display: flex;
+  flex-direction: row;
+  column-gap: 0;
+}
+
+.searchbar input {
+  margin: 0;
+}
+
+.searchbar button {
+  padding: 0;
+}
+
+.admin-panel {
+  margin: 50px;
+  padding: 20px;
+}
+
+.admin-panel div {
+  width: 90%;
+}
+
+#article {
+  padding: 20px;
+  margin: 50px;
+}
+
+.commentaires {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 /*carrousel*/
 
-#carousel {
+/*#carousel {
   display: flex;
   justify-content: center;
 }
@@ -197,7 +275,7 @@ form {
   transform: scale(1.1);
   opacity: 1;
   transform: translateX(15px);
-}
+}*/
 .menu {
   display: flex;
   justify-content: flex-end;
@@ -208,6 +286,39 @@ form {
   display: none;
 }*/
 
+#infoProfil {
+  padding: 30px;
+  margin: 50px;
+}
+
+#infoProfil img {
+  max-width: 480px;
+  height: auto;
+}
+
+#carouselExampleControls {
+  margin: 50px;
+}
+
+.updateCommentForm {
+  width: 100%;
+  padding: 30px;
+}
+
+.updateCommentForm form {
+  width: 90%;
+  margin: 30px;
+  padding: 20px;
+}
+
+.formUpdateComment div {
+  width: 90%;
+}
+
+.formUpdateComment input {
+  height: 40px;
+}
+
 /* footer */
 footer {
   padding-left: 50px;
@@ -216,6 +327,31 @@ footer {
 
 footer a {
   color: black;
+}
+
+.article-form {
+  width: 50%;
+  padding: 2%;
+  margin: 50px;
+  border-radius: 10px;
+}
+
+.article-form div {
+  width: 100%;
+}
+
+.article-form input {
+  height: 40px;
+}
+
+.carousel-item img {
+  width: 848px;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+section#articles {
+  align-items: flex-start;
 }
 
 @media (max-width: 700px) {
